@@ -1,17 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+import { createStore } from "redux"; // ✅ Correct import
+import { Provider } from "react-redux";
+import rootReducer from "./services/Reducer/index";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const store = createStore(rootReducer);
+
+// ✅ Corrected React 18 Rendering Method
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>
+  </Provider>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// ✅ Ensure serviceWorker.js exists before using this
+serviceWorker.unregister();
