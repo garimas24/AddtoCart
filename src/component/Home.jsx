@@ -39,6 +39,7 @@ function Home(props) {
           </div>
           <div className="text-wrapper item">
             <span>{value.title}</span>
+            <span>{value.img}</span>
             <span>{value.price}</span>
           </div>
           <div className="btn-wrapper item">
